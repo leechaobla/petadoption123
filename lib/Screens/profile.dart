@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'ownerrequestscreen.dart';
+import 'welcome_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -61,7 +62,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
     if (shouldLogout == true) {
       await auth.signOut();
       if (mounted) {
-        Navigator.of(context).popUntil((route) => route.isFirst);
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (_) => WelcomeScreen()),
+        );
       }
     }
   }
